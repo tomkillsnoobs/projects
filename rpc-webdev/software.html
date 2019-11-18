@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Raspberry Connection</title>
+    <meta name="description" content="Tutorial">
+    <meta name="author" content="Thomas Purdie">
+    <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="mystyles.css">
+
+</head>
+<body>
+    <header>
+        <a href="home.html">
+            <img src=img/logo.png alt="The Raspberry Connection Home">
+        </a>
+        <div class="navbar" id="navbar">
+            <a href="home.html">Home</a>
+           <div class="dropdown">
+                <button class="dropbtn">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="hardware.html">Needed Hardware</a>
+                    <a href="hardware.html#config">Hardware Configuration</a>
+                    <a href="hardware.html#gpio_info">GPIO pin layout</a>
+                    <a href="hardware.html#led_info">LEDs</a>
+                    <a href="hardware.html#bboard_info">The Breadboard</a>
+                </div>
+            </div>
+            <a href="software.html">Software</a>
+            <div class="dropdown">
+                <button class="dropbtn">Getting Started</button>
+                <div class="dropdown-content">
+                    <a href="get_started.html">Connecting components</a>
+                    <a href="get_started.html#python">Python</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Tutorials</button>
+                <div class="dropdown-content">
+                    <a href="tutorials.html">1. LED circuit</a>
+                    <a href="tutorials.html#tut2">2. LEDs and Buzzers</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <section>
+        <h1>Installing an Operating system</h1>
+		<br>
+        <p>It is recommended that if you are uncomfortable with installing an operating system or do not already have an MicroSD card, that you purchase a MicroSD card with the ‘NOOBS’ software pre-installed.</p>
+        <p>Before installing the operating system, you will need to make sure that your MicroSD is properly formatted.</p>
+        <p><i>Using Windows Explorer</i></p>
+        <p>1.   Right click on the MicroSD card select format</p>
+        <img class="content_img" style="max-width:400px;" src="img/software/step_1.PNG" alt="step 1">
+        <br>
+		<p>2.	Select the format FAT and select ‘Start’</p>
+        <img class="content_img" style="max-width:250px;" src="img/software/step_2.PNG" alt="step 2">
+        <br>
+		<p>Below are instructions on how to install the Raspbian operating system using the NOOBS package installer that is available from the <a href="https://www.raspberrypi.org/downloads/noobs/">Raspberry Pi Website</a></p>
+        <p>1.	Select the NOOBS software</p>
+        <img class="content_img" style="max-width:250px;" src="img/software/step1_1.PNG" alt="step 1">
+        <br>
+		<p>2.   On the following page, select ‘Download Zip’</p>
+        <img class="content_img" style="max-width:500px;" src="img/software/step1_2.PNG" alt="step 2">
+        <br>
+		<p>3.	Extract the files to the MicroSD card. Make sure the files are not in a subfolder. When you go into the SD card, the directory should look something like this:</p>
+        <img class="content_img" style="max-width:500px;" src="img/software/step1_3.PNG" alt="step 3">
+        <br>
+		<p>4.	Safely remove the MicroSD card and put it in the MicroSD card slot on the Raspberry Pi. (Refer to <a href="hardware.html#config">Hardware Configuration</a> for help) Start the Pi and it should boot from the SD card and land on the menu shown below. Select ‘Raspbian’ and click install. It will bring up a warning, click ‘ok’ na dgive time to install</p>
+        <img class="content_img" style="max-width:400px;" src="img/software/step1_4.PNG" alt="step 4">
+        <br>
+		<p>5.	Finally, The desktop will load where it will welcome you, this process will allow you to change time zone and set up a user account with credentials</p>
+        <img class="content_img" style="max-width:400px;" src="img/software/step1_5.PNG" alt="step 5"> 
+    </section>
+    <footer>
+        <div class="policy">
+            <a href="about_us.html">About Us</a>
+        </div>
+        <div class="author">
+            <p>designed and administered by TRC Team</p>
+            <a href="mailto:thomas.j.purdie@gmail.com">contact administrator</a>
+        </div>
+        <p class="copyright">© Raspberry Connection copyright 2019</p>
+    </footer>
+    <script>
+        window.onscroll = function() {keep()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function keep() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+    </script>
+</body>
+</html>

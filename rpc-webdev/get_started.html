@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Raspberry Connection</title>
+    <meta name="description" content="Tutorial">
+    <meta name="author" content="Thomas Purdie">
+    <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="mystyles.css">
+
+</head>
+<body>
+    <header>
+        <a href="home.html">
+            <img src=img/logo.png alt="The Raspberry Connection Home">
+        </a>
+        <div class="navbar" id="navbar">
+            <a href="home.html">Home</a>
+           <div class="dropdown">
+                <button class="dropbtn">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="hardware.html">Needed Hardware</a>
+                    <a href="hardware.html#config">Hardware Configuration</a>
+                    <a href="hardware.html#gpio_info">GPIO pin layout</a>
+                    <a href="hardware.html#led_info">LEDs</a>
+                    <a href="hardware.html#bboard_info">The Breadboard</a>
+                </div>
+            </div>
+            <a href="software.html">Software</a>
+            <div class="dropdown">
+                <button class="dropbtn">Getting Started</button>
+                <div class="dropdown-content">
+                    <a href="get_started.html">Connecting components</a>
+                    <a href="get_started.html#python">Python</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Tutorials</button>
+                <div class="dropdown-content">
+                    <a href="tutorials.html#tut1">1. LED circuit</a>
+                    <a href="tutorials.html#tut2">2. LEDs and Buzzers</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <section>
+        <h1>Getting Started – Getting ready for tutorials</h1>
+        <h2>Connecting the Components</h2>
+        <p>To be able to use the GPIO pins, you will need to connect your breakout board to the Raspberry Pi using the extension cable</p>
+        <img class="content_img" style="max-width:300px;" src="img/get_started/step1_1.PNG" alt="step 0">
+        <br>
+		<p>1.	Join the extension ribbon cable to the breakout board</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step1_2.PNG" alt="step 1">
+        <br>
+		<p>2.	Connect the other end of the ribbon to the GPIO pins of the Raspberry Pi</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step1_3.PNG" alt="step 2">
+        <br>
+		<p>3.	Next, connect the breakout board to the breadboard like so:</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step1_4.PNG" alt="step 3">
+        <br>
+		<p>4.	You will now have to boot up your Pi and change some settings. First click on the ‘Applications menu’</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step1_4.PNG" alt="step 4">
+        <br>
+		<p>5.	Hover over ‘Preferences’ and select ‘Raspberry Pi Configuration’</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step1_5.PNG" alt="step 5">
+        <br>
+		<p>6.	In the menu that follows, make sure that SSH, VNC and SPI are enabled. You can enable all of the interfaces if you would like but these three will be the only ones needed for the tutorials. The reason they are disabled is for security purposes. </p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step1_6.PNG" alt="step 6">
+        <br>
+        <anchor id="python"></anchor>
+		<hr>
+		<br>
+        <h1>Using Python and running Python scripts</h1>
+        <p>To make the Raspberry Pi do things, you have to give it instructions. The most versatile and flexible way of doing this is through the use of the programming language, Python.</p>
+        <p>You can create python scripts on the Raspberry Pi’s operating system just like any other operating system such as Windows or macOS. Unfortunately, there aren’t as many user-friendly software options for writing the code. Unlike Windows or macOS, there is little support for Raspbian. </p>
+        <p>There is already a Python editor installed on the Raspberry Pi. But if you are genuinely new to Python programming, I would recommend practicing on some more user friendly, supportive editor options and copy or transfer the code to the Raspberry Pi. This can simply be done using a USB drive.</p>
+        <p>So how to access the built-in editor. Raspbian has Python 3.6 and 2.7 installed by default. We will be using the 3.5 version.</p>
+        <br>
+        <p>1.	To access it, first open the application menu, hover over ‘programming’ and in the sub-menu select ‘Python 3 (IDLE)’.</p>
+        <img class="content_img" style="max-width:300px;" src="img/get_started/step2_1.PNG" alt="step 1">
+        <br>
+		<p>2.	The python shell will open. Click on ‘file’ then ‘New file’ this will open up the editor for you to start coding!</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step2_2.PNG" alt="step 2">
+        <br>
+		<p>3.	Once you have started writing code, it is important to save the file. So click ‘file’ then ‘save’. Do this early and do it often! You will also have to save your work each time you run the code if changes are made.</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step2_3.PNG" alt="step 3">
+        <br>
+		<p>4.	Finally, you’ve written some code, and you want to run it. There are a couple of ways to do this. The first is to click ‘Run’ ad then ‘Run Module’.</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step2_4.PNG" alt="step 4">
+        <br>
+        <p>The other way to do it is through the command line. This must be done for more complex code that needs administrator permission to run. Using the ‘cd/’ command, you must input the file directory to the file. The example below shows pointing the command line to the directory ‘Documents’ and then using the command ‘Python3 [filename]’ where [filename] is the name you gave your file when you save it.</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step2_5.PNG" alt="step 5">
+        <br>
+		<p>But wait! That wasn’t giving the OS permission to run the script with administrator permissions. To do that, use the command ‘sudo python3 [filename]’ instead. The difference is ‘sudo’ which is the command for ‘superuser do’.</p>
+        <img class="content_img" style="max-width:500px;" src="img/get_started/step2_6.PNG" alt="step 6">
+        
+        
+        
+    </section>
+    <footer>
+        <div class="policy">
+            <a href="about_us.html">About Us</a>
+        </div>
+        <div class="author">
+            <p>designed and administered by TRC Team</p>
+            <a href="mailto:thomas.j.purdie@gmail.com">contact administrator</a>
+        </div>
+        <p class="copyright">© Raspberry Connection copyright 2019</p>
+    </footer>
+    <script>
+        window.onscroll = function() {keep()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function keep() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+    </script>
+</body>
+</html>

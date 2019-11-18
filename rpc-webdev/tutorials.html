@@ -1,0 +1,170 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Raspberry Connection</title>
+    <meta name="description" content="Tutorial">
+    <meta name="author" content="Thomas Purdie">
+    <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="mystyles.css">
+
+</head>
+<body>
+    <header>
+        <a href="home.html">
+            <img src=img/logo.png alt="The Raspberry Connection Home">
+        </a>
+        <div class="navbar" id="navbar">
+            <a href="home.html">Home</a>
+           <div class="dropdown">
+                <button class="dropbtn">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="hardware.html">Needed Hardware</a>
+                    <a href="hardware.html#config">Hardware Configuration</a>
+                    <a href="hardware.html#gpio_info">GPIO pin layout</a>
+                    <a href="hardware.html#led_info">LEDs</a>
+                    <a href="hardware.html#bboard_info">The Breadboard</a>
+                </div>
+            </div>
+            <a href="software.html">Software</a>
+            <div class="dropdown">
+                <button class="dropbtn">Getting Started</button>
+                <div class="dropdown-content">
+                    <a href="get_started.html">Connecting components</a>
+                    <a href="get_started.html#python">Python</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Tutorials</button>
+                <div class="dropdown-content">
+                    <a href="tutorials.html">1. LED circuit</a>
+                    <a href="tutorials.html#tut2">2. LEDs and Buzzers</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <section>
+        <h1>Tutorial 1 - A simple LED Circuit</h1>
+		<br>
+        <p>This first task will introduce the concept of the GPIO pins and the breadboard. No programming is needed for this first task just make sure you have properly set up the <a href="hardware.html">hardware needed.</a></p>
+        <p>This is what the breadboard will look like in the end:</p>
+        <img class="content_img" style="max-width:500px;" src="img/tutorials/tut1_1.PNG" alt="step 0">
+        <br>
+		<p>There are four main tasks to do:</p>
+        <p>1.	First, Connect the ground to the board, this is an important first step of any circuit. On the extension board, it is denoted as GND. There are multiple of these, any will do.</p>
+        <br>
+		<p>2.	Then add the LED to the board so that the negative is connected to the ground</p>
+        <img class="content_img" style="max-width:500px;" src="img/tutorials/tut1_2.PNG" alt="step 1 and 2">
+        <br>
+		<p>3.	Next add the resister. This must connect the current row of pins used by the LED to a different row. Orientation doesn’t matter.</p>
+        <img class="content_img" style="max-width:500px;" src="img/tutorials/tut1_3.PNG" alt="step 3">
+        <br>
+		<p>4.	Lastly add the power using a wire from one of the 5 voltage pins (5VD) to the row with the resister that is not connected to the LED (positive side).</p>
+        <img class="content_img" style="max-width:500px;" src="img/tutorials/tut1_4.PNG" alt="step 4">
+        <br>
+		<p>5.	To add a switch is pretty easy. The concept is just to break and then connect the circuit to create a ‘switch’</p>
+        <img class="content_img" style="max-width:500px;" src="img/tutorials/tut1_5.PNG" alt="step 5">
+        <br>
+		<p>6.	Joining the two wires together will turn the light on and disconnecting them again will turn it off!</p>
+        <br>
+		<hr>
+        
+        
+        <anchor  id="tut2"></anchor>
+        <h1>Tutorial 2 - More LEDs, making noise and how to control it through python programming</h1>
+        <h2>Component setup</h2>
+        <p>Expanding on what we learned in <a href="tutorials.html#tut1">Project 1</a>, This task will show you how to program the GPIO pins to a couple of simple components, namely the buzzer and the LEDs. This tutorial will explain how to get three different colored LEDs to flash in sequence, and eventually sync them to three different tones made by the buzzer. Tis will show how python programming can be used to control the external components through the use of the GPIO pins.</p>
+        <p>Fist, getting these LEDs to work</p>
+        <p>We will need to set up the components before we program what they should do.</p>
+        <img class="content_img" style="max-width:500px;" src="img/tutorials/tut2_1.PNG" alt="step 1">
+        <p>So first, connect the ground to one of the rails, like in the previous project.</p>
+        <p>The <a href="hardware.html#gpio_info">pin layout</a> is as follows</p>
+        <ol>
+            <li>Red LED – GPIO14 (TXD0)</li>
+            <li>Green LED – GPIO21</li>
+            <li>Orange LED – GPIO20</li>
+        </ol>
+        <p>Connect the LEDs to the corresponding GPIO pin.</p>
+        <p>Remember the <a href="hardware.html#led_info">orientation of the LED</a> and to use resistors!</p>
+        <br>
+        <h2>Programming the components</h2>
+        <p>Now to tell the components what to do.</p>
+        <p>1.	You will need to <a href="get_started.html#python">open a new python file</a> and import RPi.GPIO. This is a Python library that controls the GPIO pins. You will also need to import ‘sleep’ from the module ‘time’. Next, you will need to set the warnings to false and set the mode to BCM. This means we will refer to the GPIO pin rather than the pin number itself. <a href="hardware.html#gpio_info">Look here for clarification.</a></p>
+        <img class="content_img" style="max-width:200px;" src="img/tutorials/tut2_2.PNG" alt="step 1">
+        <br>
+		<p>2.	Next, set up the GPIO pins. This must be done so Python knows what context the pins are being used for. In this case, output. You will notice that each of these GPIO pins corresponds to the ones you plugged your components into earlier.</p>
+        <img class="content_img" style="max-width:200px;" src="img/tutorials/tut2_3.PNG" alt="step 2">
+        <br>
+		<p>3.	Now we are going to use a Python for loop to flash the lights. This saves us writing the same code many times. Instead we can loop over the same code multiple times, as many as we want. So, to start we will declare a for loop with a range. In the example, the range is 30, meaning it it’ll run the code in the loop 30 times.</p>
+        <img class="content_img" style="max-width:200px;" src="img/tutorials/tut2_4.PNG" alt="step 3">
+        <br>
+		<p>4.	Inside the for loop we want to make each light blink for half a second. We can do this by turning one light on, then using the sleep function to wait 0.5 seconds. We can eventually do this consecutively for each light. To turn the light on use the GPIO.output(x,y) command with parameters of ‘x’ being the GPIO pin you want to output and ‘y’ being what you want to output. It will look like this:</p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_5.PNG" alt="step 4">
+        <br>
+		<p>5.	No that the light will turn on, we want to turn it off again. Using the same function, we just change GPIO.HIGH to GPIO.LOW. we can do this after using the sleep command that will keep the light on for 0.5 seconds.</p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_6.PNG" alt="step 5">
+        <br>
+		<p>You can run the code so far and see the light flash on and off</p>
+        <br>
+		<p>6.	Now we just need to complete the last two steps another two times for the other two lights</p>
+		<img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_7.PNG" alt="step 6">
+        <br>
+		<p>7.	For debugging purposes, feel free to add ‘print’ statements in your code. The example below will print “loop” to the console everytime it loops so that I know when it has looped, even if none of the lights are working. Therefore, if the lights don’t work, I know the code has run, but there is a problem.</p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_8.PNG" alt="step 7">
+        <br>
+		<p>8.	Lastly you want to use the GPIO.cleanup function. This is very important to run at the end of any script. It sets the GPIO pins to their default values. For example: if you turned a LED on in a script and didn’t turn it off, it would stay on even when the script has completed. But by putting ‘GPIO.cleanup’ at the end of the script, it would turn the light off. Setting the pins to their default values is important for testing where each test needs to start at the same system state.</p>
+        <p>The final code will look like this:</p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_9.PNG" alt="step 8">
+        <br>
+        <h2>Adding Sound</h2>
+        <p>Now we want to add some sound. Using python, we can alter the frequency of the buzzer to create different sounds for each light as it flashes. You will notice that in the current code, there is similar code repeated three times with different parameters. We can add a couple of different frequency changes for each light.</p>
+        <p>First, adding the components. you can see below that the buzzer has been added to the breadboard. In the example, the buzzer is connected to GPIO15. Like the LEDs, don’t forget a resistor!</p>
+        <img class="content_img" style="max-width:500px;" src="img/tutorials/tut2_10.PNG" alt="added buzzer">
+        <br>
+		<p>Now to program it! </p>
+        <p>1.	Like the LEDs we must declare the GPIO pin as an output. Unlike the LEDs though, we will be using pulse width modulation PWM to change the frequency of the buzzer. To declare this we must create a variable, the example below uses ‘p’, and point it to the PWM function which is GPIO.PWM(pin,frequency)</p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_11.PNG" alt="step 1">
+        <br>
+		<p>2.	Now to add a couple of frequencies to the code.  Using ‘p.start’ will now </p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_12.PNG" alt="step 2">
+        <br>
+		<p>3.	Carry out step 2 for all three of the lights. Feel free to add a couple of frequency changes or more. In the example, there are four frequency changes: one when the first light turns on, then two for the second light and one for the third, as shown:</p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_13.PNG" alt="step 3">
+        <br>
+		<p>4.	To wrap up we have to turn off the GPIO output to the buzzer using GPIO.LOW and also stop the GPIO.PWM with ‘p.stop’. this is because we earlier associated the function, with ‘p’.</p>
+        <img class="content_img" style="max-width:250px;" src="img/tutorials/tut2_14.PNG" alt="step 4">
+        <p>Feel free to go on and change the sounds and flashings using what you have learnt.  Add more frequency changes, patterns and sync them up with the flashing lights.</p>
+		<br>
+		<p>If you want to know what other things that the Raspberry Pi can do, check out <a href="https://www.instructables.com/id/Raspberry-Pi-Projects/">Instructables</a> for some project ideas.</p>
+    </section>
+    <footer>
+        <div class="policy">
+            <a href="about_us.html">About Us</a>
+        </div>
+        <div class="author">
+            <p>designed and administered by TRC Team</p>
+            <a href="mailto:thomas.j.purdie@gmail.com">contact administrator</a>
+        </div>
+        <p class="copyright">© Raspberry Connection copyright 2019</p>
+    </footer>
+    <script>
+        window.onscroll = function() {keep()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function keep() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+    </script>
+</body>
+</html>

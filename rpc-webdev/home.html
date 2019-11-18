@@ -1,0 +1,111 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Raspberry Connection</title>
+    <meta name="description" content="Tutorial">
+    <meta name="author" content="Thomas Purdie">
+    <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="mystyles.css">
+    <script src="myscripts.js"></script>
+
+</head>
+<body>
+    <header>
+        <a href="home.html">
+            <img src=img/logo.png alt="The Raspberry Connection Home">
+        </a>
+        <div class="navbar" id="navbar">
+            <a href="home.html">Home</a>
+           <div class="dropdown">
+                <button class="dropbtn">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="hardware.html">Needed Hardware</a>
+                    <a href="hardware.html#config">Hardware Configuration</a>
+                    <a href="hardware.html#gpio_info">GPIO pin layout</a>
+                    <a href="hardware.html#led_info">LEDs</a>
+                    <a href="hardware.html#bboard_info">The Breadboard</a>
+                </div>
+            </div>
+            <a href="software.html">Software</a>
+            <div class="dropdown">
+                <button class="dropbtn">Getting Started</button>
+                <div class="dropdown-content">
+                    <a href="get_started.html">Connecting components</a>
+                    <a href="get_started.html#python">Python</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Tutorials</button>
+                <div class="dropdown-content">
+                    <a href="tutorials.html">1. LED circuit</a>
+                    <a href="tutorials.html#tut2">2. LEDs and Buzzers</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <section>
+        <h1>Welcome to the Raspbrry Pi Connection!</h1>
+        <br>
+        <p>This website is about the basic development interactions with a Raspberry pi, this includes a bit about the software and hardware aspects. </p>
+        <br>
+        <p><big><i>"It all starts with a connection."</i></big></p>
+        <div class="slideshow-container">
+            <div class="slideshow-inner">
+              <div class="mySlides fade">
+
+                <img  src='img/slideshow/slide1.png' style='width: 100%;' alt="The Raspberry Pi"/>
+                <div class="text">The Raspberry Pi!</div>
+              </div>
+
+              <div class="mySlides fade">
+
+                <img  src='img/slideshow/slide2.png' style='width: 100%;' alt="Processor"/>
+                <div class="text">The Raspberry Pi processor</div>
+              </div>
+
+              <div class="mySlides fade">
+
+                <img  src='img/slideshow/slide3.png' style='width: 100%;' alt="Sense Hat"/>
+                <div class="text">Raspberry Pi Sense Hat</div>
+              </div>
+
+              <div class="mySlides fade">
+
+                <img  src='img/slideshow/slide4.png' style='width: 100%;' alt="Raspberry Pi 3"/>
+                <div class="text">Raspberry Pi 3</div>
+              </div>
+
+              </div>
+
+
+              <a class="prev" onclick='plusSlides(-1)'>&#10094;</a>
+              <a class="next" onclick='plusSlides(1)'>&#10095;</a>
+        </div>
+        <br/>
+
+
+        <div style='text-align: center;'>
+          <span class="dot" onclick='currentSlide(1)'></span>
+          <span class="dot" onclick='currentSlide(2)'></span>
+          <span class="dot" onclick='currentSlide(3)'></span>
+          <span class="dot" onclick='currentSlide(4)'></span>
+        </div>
+    </section>
+    <footer>
+        <div class="policy">
+            <a href="about_us.html">About Us</a>
+        </div>
+        <div class="author">
+            <p>designed and administered by TRC Team</p>
+            <a href="mailto:thomas.j.purdie@gmail.com">contact administrator</a>
+        </div>
+        <p class="copyright">© Raspberry Connection copyright 2019</p>
+    </footer>
+</body>
+</html>

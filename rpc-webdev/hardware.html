@@ -1,0 +1,618 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Raspberry Connection</title>
+    <meta name="description" content="Tutorial">
+    <meta name="author" content="Thomas Purdie">
+    <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="mystyles.css">
+
+</head>
+<body>
+    <header>
+        <a href="home.html">
+            <img src=img/logo.png alt="The Raspberry Connection Home">
+        </a>
+        <div class="navbar" id="navbar">
+            <a href="home.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="hardware.html">Needed Hardware</a>
+                    <a href="hardware.html#config">Hardware Configuration</a>
+                    <a href="hardware.html#gpio_info">GPIO pin layout</a>
+                    <a href="hardware.html#led_info">LEDs</a>
+                    <a href="hardware.html#bboard_info">The Breadboard</a>
+                </div>
+            </div>
+            <a href="software.html">Software</a>
+            <div class="dropdown">
+                <button class="dropbtn">Getting Started</button>
+                <div class="dropdown-content">
+                    <a href="get_started.html">Connecting components</a>
+                    <a href="get_started.html#python">Python</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Tutorials</button>
+                <div class="dropdown-content">
+                    <a href="tutorials.html">1. LED circuit</a>
+                    <a href="tutorials.html#tut2">2. LEDs and Buzzers</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <section>
+        <h1>Hardware you'll be needing or may need</h1>
+        <p>The first thing that you will need to do is to purchase the hardware. There are many retailers all over the world that stock and sell the Raspberry Pi, its components, and many other add on hardware that is optional for the tutorials on this website and the hundreds of other project possibilities. </p>
+        <p>First, you will need the Raspberry Pi. The raspberry Pi is a micro-computer that can be used as a computing device or logic controller on many projects. It has an array of in and out interfaces (I/O) that can be utilized and programmed.</p>
+        <p>The hard part is knowing which products you will need to start off, or if any packaged products will be of use. There are many models of the Raspberry Pi, the model we will use is the 3rd generation Raspberry Pi 3 B+. We don’t recommend using any model older than this but do recommend that if you are buying a new Raspberry Pi, you purchase one of the new 4th Generation Raspberry Pi 4. The instructions for the tutorials on this site are the same for all models. There are three models in the 4th generation, namely 1GB, 2GB and 4GB. For the tutorials contained here, the 1GB option will suffice, but if you are looking to do more with your Pi outside the scope of the tutorials, then go with one of the beefier options. It may be a more future proof option to go for a beefier one too.</p>
+        <p>Go to <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">this link</a> to find an approved reseller in your country. Just click ‘Buy Now’ and select your country to see the approved resellers.</p>
+        <p>The hardware you will need is:</p>
+        <ul>
+            <li>The Raspberry Pi 4B computer (board) – 1GB, 2GB or 4GB</li>
+            <li>Raspberry Pi 4 power supply</li>
+            <li>Micro HDMI to HDMI cable (new to 4th Generation)</li>
+            <li>MicroSD card (minimum 8GB)</li>
+        </ul>
+        <p><i>Note: it is recommended that you also purchase a case for your raspberry pi board. These can be purchased from the same resellers. </i></p>
+        <p>The hardware needed for <b>ALL</b> tutorials</p>
+        <ul class="component_list">
+            <li>Solderless breadboard “full size” with 830 tie points 
+            <img class="list_img" src=img/bboard.png alt="breadboard">
+            </li>
+            <li>Jump wires (minimum 65)  
+            <img class="list_img" src=img/jump_wires.png alt="jump wires">
+            </li>
+            <li>40-Pin GPIO Breakout and Cable 
+            <img class="list_img" src=img/breakout.png alt="Breakout and cable"></li>
+            <li>Light emitting diodes (LEDs) of different colours  
+            <img class="list_img" src=img/led.png alt="LED lights">
+            </li>
+            <li>Resistors (recommended 470 ohms but as low as 75 ohms or higher will work). 
+            <img class="list_img" src=img/resistor.png alt="470 ohm resistors">
+            For more information on resisters and how to read them, visit <a href="https://www.allaboutcircuits.com/tools/resistor-color-code-calculator/">All About Circuits</a>
+            </li>
+            <li>Buzzer 
+            <img class="list_img" src=img/buzzer.png alt="Buzzer">
+            </li>
+        </ul>
+        
+        <anchor id="config"></anchor>
+		<br>
+		<hr>
+        <h1>Hardware Configuration</h1>
+        <p><i>Note. The Pi used is third generation. Any changes effecting the ability of configuration will be explained</i></p>
+        <br>
+		<hr>
+		<h2>First, important parts to know:</h2>
+        <p><i>Raspberry Pi 3:</i></p>
+        <img class="content_img" src="img/piboard3.PNG">
+        <br>
+        <p><i>Raspberry Pi 4:</i></p>
+        <img class="content_img" src="img/piboard4.PNG">
+        <br>
+        <p>Bottom view of the Raspberry Pi:</p>
+        <img class="content_img" src="img/pibottom.PNG">
+        <p>Before you start, make sure you have NOOOBS or another OS installed on your MicroSD card. If you have not done this follow <a href="software.html">this guide</a></p>
+        <br>
+		<hr>
+		<h2>Raspberry Pi 4 setup</h2>
+        <img class="content_img" src="img/piio.PNG">
+        <ol>
+            <li>Make sure the MicroSD card is in the slot with NOOBS or other OS installed.</li>
+            <li>Plug in ethernet port for a wired connection (optional)</li>
+            <li>Plug in mouse and keyboard (wireless recievers should work, depending on drivers)</li>
+            <li>Plug in mini HDMI – plug other end into monitor</li>
+            <li>Plug USB-C power cable in before connecting to the wall outlet</li>
+            <li>Turn on monitor, go to the right input, and you should see the splash screen</li>
+        </ol>
+        <anchor id="gpio_info"></anchor>
+		<br>
+		<hr>
+        <h1>The General Purpose In Out (GPIO) Pin layout</h1>
+        <table class="gpio">
+            <tbody>
+                <tr>
+                    <td width="245">
+                        <p align="right">
+                            <strong>Name/function</strong>
+                        </p>
+                    </td>
+                    <td width="113" colspan="2">
+                        <p align="center">
+                            <strong>Pin number</strong>
+                        </p>
+                    </td>
+                    <td width="242">
+                        <p>
+                            <strong>Name/function</strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            3.3v DC Power
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            1
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            2
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            5v DC Power
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO02 (SDA1, I2C)
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            3
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            4
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            5v DC Power
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO03 (SCL1, I2C)
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            5
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            6
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            Ground
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO04
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            7
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            8
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO14 (TXD0)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            Ground
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            9
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            10
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO15 (RXD0)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO17
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            11
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            12
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO18
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO27
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            13
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            14
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            Ground
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO22
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            15
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            16
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO23
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            3.3v DC Power
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            17
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            18
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO24
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO10 (SPI_MOSI)
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            19
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            20
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            Ground
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO09 (SPI_MISO)
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            21
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            22
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO25
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO11 (SPI_CLK)
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            23
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            24
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO08 (SPI_CE0_N)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            Ground
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            25
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            26
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO07 (SPI_CE1_N)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            ID_SD (I2C ISD EEPROM)
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            27
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            28
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            ID_SC (I2C ID EEPROM)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO05
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            29
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            30
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            Ground
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO06
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            31
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            32
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO12
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO13
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            33
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            34
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            Ground
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO19
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            35
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            36
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO16
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            GPIO26
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            37
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            38
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO20
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="245" valign="top">
+                        <p align="right">
+                            Ground
+                        </p>
+                    </td>
+                    <td width="55" valign="top">
+                        <p align="right">
+                            39
+                        </p>
+                    </td>
+                    <td width="58" valign="top">
+                        <p>
+                            40
+                        </p>
+                    </td>
+                    <td width="242" valign="top">
+                        <p>
+                            GPIO21
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <anchor id="led_info"></anchor>
+		<br>
+		<hr>
+        <h1>LED Orientation</h1>
+        <img class="content_img" src="img/led_desc.png" alt="the orientation of the LED" style="width:25%;">
+        
+		<br>
+        <h1 id="bboard_info">Understanding the Breadboard</h1>
+		<br>
+         <img class="content_img" src="img/bboard_desc.PNG" alt="how the breadboard works">
+        <p>The black lines show examples of connected pins. These are usually delegated by rows. So, in the example above, the extension board has already utilized the first 18 rows on either side of the board. The whole row can be used to connect to the same pin in the Raspberry Pi.</p>
+    </section>
+    <footer>
+        <div class="policy">
+            <a href="about_us.html">About Us</a>
+        </div>
+        <div class="author">
+            <p>designed and administered by TRC Team</p>
+            <a href="mailto:thomas.j.purdie@gmail.com">contact administrator</a>
+        </div>
+        <p class="copyright">© Raspberry Connection copyright 2019</p>
+    </footer>
+    <script>
+        window.onscroll = function() {keep()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function keep() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+    </script>
+</body>
+</html>

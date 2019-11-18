@@ -1,0 +1,93 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Raspberry Connection</title>
+    <meta name="description" content="Tutorial">
+    <meta name="author" content="Thomas Purdie">
+    <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="mystyles.css">
+    <script src="myscripts.js"></script>
+
+</head>
+<body>
+    <header>
+        <a href="home.html">
+            <img src=img/logo.png alt="The Raspberry Connection Home">
+        </a>
+        <div class="navbar">
+            <a href="home.html">Home</a>
+           <div class="dropdown">
+                <button class="dropbtn">Hardware</button>
+                <div class="dropdown-content">
+                    <a href="hardware.html">Needed Hardware</a>
+                    <a href="hardware.html#config">Hardware Configuration</a>
+                    <a href="hardware.html#gpio_info">GPIO pin layout</a>
+                    <a href="hardware.html#led_info">LEDs</a>
+                    <a href="hardware.html#bboard_info">The Breadboard</a>
+                </div>
+            </div>
+            <a href="software.html">Software</a>
+            <div class="dropdown">
+                <button class="dropbtn">Getting Started</button>
+                <div class="dropdown-content">
+                    <a href="get_started.html">Connecting components</a>
+                    <a href="get_started.html#python">Python</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Tutorials</button>
+                <div class="dropdown-content">
+                    <a href="tutorials.html">1. LED circuit</a>
+                    <a href="tutorials.html#tut2">2. LEDs and Buzzers</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <section>
+        <h1>About Us</h1>
+        <br>
+        <p>Raspberry Pi Connection is a tutorial and guide for anyone who has very little knowledge about the Raspberry Pi, how to set it up, program it and utilize the I/O but has an interest in expanding their engineering and programming knowledge</p>
+        <h1> Contact Us</h1>
+        <br>
+        
+        <form class="application">
+            <div class="contact_input">
+                <label>First Name <small>required</small></label>
+                <input class="input" type="text" name="first" id="first" required />
+            </div>
+            <div class="contact_input">
+                <label>Last Name <small>required</small></label>
+                <input class="input" type="text" name="last" id="last" required />
+            </div>
+            <div class="contact_input">
+                <label>Email <small>required</small></label>
+                <input class="input" type="text" name="email" id="email" required />
+            </div>
+            <div class="contact_input">
+                <label>Message <small>required</small></label><br>
+                <textarea id="message" name="message"></textarea>
+            </div>
+
+        </form>
+        <div class="form_submit">
+            <input type="submit" value="Submit" onclick="store()">
+        </div>
+    </section>
+    <footer>
+        <div class="policy">
+            <a href="about_us.html">About Us</a>
+        </div>
+        <div class="author">
+            <p>designed and administered by TRC Team</p>
+            <a href="mailto:thomas.j.purdie@gmail.com">contact administrator</a>
+        </div>
+        <p class="copyright">© Raspberry Connection copyright 2019</p>
+    </footer>
+</body>
+</html>
